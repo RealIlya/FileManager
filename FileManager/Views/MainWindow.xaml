@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FileManager"
+        xmlns:local="clr-namespace:FileManager.Controls"
         xmlns:viewModel="clr-namespace:FileManager.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -25,8 +25,8 @@
             <Menu>
                 <Image />  <!--Logo-->
                 <MenuItem Header="File">
-                    <MenuItem Header="Open" Command="{Binding OpenFiles}" />
-                    <MenuItem Header="Clear" Command="{Binding ClearList}" />
+                    <MenuItem Header="Open" Command="{Binding OpenTree}" />
+                    <MenuItem Header="Clear" Command="{Binding ClearTree}" />
                     <Separator />
                     <MenuItem Header="Settings" Command="{Binding Settings}" />
                     <Separator />
@@ -47,70 +47,48 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TreeView Grid.Column="0"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ItemsSource="{Binding Elements}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding ChildFolders}">
+            <local:ExtendedTreeView Grid.Column="0"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                    HorizontalAlignment="Stretch"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    ItemsSource="{Binding Elements}"
+                                    SelectedItem_="{Binding SelectedFile, Mode=TwoWay}">
+
+                <local:ExtendedTreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                         <TextBlock Text="{Binding Name}" />
                     </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-                
-                <TreeView.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Edit">
-                            <MenuItem Header="Rename" Command="{Binding ShowFile}"
-                                      CommandParameter="{Binding SelectedFile}" />
-                            <MenuItem Header="Delete" Command="{Binding DeleteFileFromList}"
-                                      CommandParameter="{Binding SelectedFile}" />
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem Header="Show in Explorer" Command="{Binding GoToPath}"
-                                  CommandParameter="{Binding SelectedFile}" />
-                    </ContextMenu>
-                </TreeView.ContextMenu>
-            </TreeView>
+                </local:ExtendedTreeView.ItemTemplate>
 
-            <!--<ListView Grid.Column="0"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ItemsSource="{Binding AvailableFiles}"
-                      SelectedItem="{Binding SelectedFile}"
-                      Background="Transparent"
-                      BorderThickness="0"
-                      HorizontalContentAlignment="Stretch">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"
-                                   ToolTip="{Binding Name}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.InputBindings>
+                <local:ExtendedTreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="Template"
+                                Value="{StaticResource FilesTree}" />
+                    </Style>
+                </local:ExtendedTreeView.ItemContainerStyle>
+
+                <local:ExtendedTreeView.InputBindings>
                     <KeyBinding Key="Delete"
-                                Command="{Binding DeleteFileFromList}" CommandParameter="{Binding SelectedFile}" />
+                                Command="{Binding DeleteElemFromTree}" CommandParameter="{Binding SelectedFile}" />
                     <MouseBinding MouseAction="LeftDoubleClick"
                                   Command="{Binding ShowFile}" CommandParameter="{Binding SelectedFile}" />
-                </ListView.InputBindings>
+                </local:ExtendedTreeView.InputBindings>
 
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Template"
-                                Value="{StaticResource FilesListItems}" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ContextMenu>
+                <local:ExtendedTreeView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Edit">
                             <MenuItem Header="Rename" Command="{Binding ShowFile}"
                                       CommandParameter="{Binding SelectedFile}" />
-                            <MenuItem Header="Delete" Command="{Binding DeleteFileFromList}"
+                            <MenuItem Header="Delete" Command="{Binding DeleteElemFromTree}"
                                       CommandParameter="{Binding SelectedFile}" />
                         </MenuItem>
                         <Separator />
                         <MenuItem Header="Show in Explorer" Command="{Binding GoToPath}"
                                   CommandParameter="{Binding SelectedFile}" />
                     </ContextMenu>
-                </ListView.ContextMenu>
-            </ListView>-->
+                </local:ExtendedTreeView.ContextMenu>
+            </local:ExtendedTreeView>
 
             <GridSplitter Grid.Column="1"
                           ShowsPreview="True"
@@ -118,10 +96,15 @@
                           VerticalAlignment="Stretch"
                           Width="3" />
 
-            <StackPanel Grid.Column="2">
-                <TextBlock Text="{Binding SelectedFile}" />
-                <Frame Content="{Binding CurrentPage}" />
-            </StackPanel>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding SelectedFile.Name}" />
+                <Frame Grid.Row="1" Content="{Binding CurrentPage}" />
+            </Grid>
         </Grid>
 
     </Grid>

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <Style x:Key="MenuItem" TargetType="MenuItem">
         <Setter Property="Background" Value="{StaticResource UltraLightDarkBaseBrush}" />
         <Setter Property="Foreground" Value="{StaticResource MediumBrush}" />
@@ -9,7 +9,7 @@
         <Setter Property="FontWeight" Value="Light" />
     </Style>
 
-    
+
     <Style x:Key="MenuUpper" TargetType="Menu">
         <Setter Property="Background" Value="{StaticResource LightBaseBrush}" />
         <Setter Property="Foreground" Value="{StaticResource MediumBrush}" />
@@ -17,6 +17,6 @@
         <Setter Property="FontSize" Value="{StaticResource Medium}" />
         <Setter Property="FontWeight" Value="Light" />
     </Style>
-    
-    
+
+
 </ResourceDictionary>
