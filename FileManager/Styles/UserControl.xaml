@@ -3,40 +3,68 @@
 
     <ControlTemplate x:Key="FilesTree" TargetType="TreeViewItem">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
             <Border
+                Grid.Row="0"
+                Grid.Column="0"
                 Name="Border"
-                Margin="10, 2"
-                Background="{StaticResource MediumBrush}"
-                CornerRadius="2">
-                <TextBlock
-                    Name="TextBlock"
-                    Margin="0"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold"
-                    Foreground="Gray"
-                    Style="{StaticResource BaseText}"
-                    Text="{Binding Name}"
-                    TextAlignment="Left"
-                    TextTrimming="CharacterEllipsis"
-                    TextWrapping="Wrap"
-                    ToolTip="{Binding Name}" />
+                HorizontalAlignment="Stretch"
+                Background="{StaticResource MediumBrush}">
+                <Grid
+                    Margin="5, 2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Name="Shower"
+                        ClickMode="Press"
+                        IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                        Style="{StaticResource ToggleStyle}"
+                        Visibility="Collapsed" />
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Name="TextBlock"
+                        Margin="4 0"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="Gray"
+                        Style="{StaticResource BaseText}"
+                        Text="{Binding Name}"
+                        TextAlignment="Left"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="Wrap"
+                        ToolTip="{Binding Name}" />
+                </Grid>
+
             </Border>
 
-            <Polygon
-                Name="Triangle"
-                Margin="2"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Fill="{Binding ElementName=Border, Path=Background}"
-                Points="0,0 20,15 0,30"
-                Visibility="Hidden" />
+
+            <ItemsPresenter x:Name="ItemsHost"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2" />
         </Grid>
 
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter TargetName="Border" Property="Background" Value="{StaticResource UltraLightDarkBaseBrush}" />
-                <Setter TargetName="Triangle" Property="Visibility" Value="Visible" />
                 <Setter TargetName="TextBlock" Property="Foreground" Value="{StaticResource LightBrush}" />
             </Trigger>
 
@@ -44,6 +72,14 @@
                 <Setter TargetName="Border" Property="Background" Value="{StaticResource UltraLightDarkBaseBrush}" />
                 <Setter TargetName="TextBlock" Property="Foreground" Value="{StaticResource LightBrush}" />
             </Trigger>
+
+            <Trigger Property="IsExpanded" Value="False">
+                <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <DataTrigger Binding="{Binding Extension}" Value="{x:Null}">
+                <Setter TargetName="Shower" Property="Visibility" Value="Visible" />
+            </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

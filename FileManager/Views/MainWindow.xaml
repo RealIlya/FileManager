@@ -48,13 +48,12 @@
             </Grid.ColumnDefinitions>
 
             <local:ExtendedTreeView Grid.Column="0"
-                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                    HorizontalAlignment="Stretch"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                     Background="Transparent"
+                                    HorizontalContentAlignment="Center"
                                     BorderThickness="0"
                                     ItemsSource="{Binding Elements}"
                                     SelectedItem_="{Binding SelectedFile, Mode=TwoWay}">
-
                 <local:ExtendedTreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                         <TextBlock Text="{Binding Name}" />

@@ -32,3 +32,4 @@ C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\o
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\App.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Menu.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\ScrollBar.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Buttons.baml

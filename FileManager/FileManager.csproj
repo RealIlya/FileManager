@@ -103,6 +103,7 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
+      <Page Include="Styles\Buttons.xaml" />
       <Page Include="Styles\Colors.xaml" />
       <Page Include="Styles\Fonts.xaml" />
       <Page Include="Styles\Menu.xaml" />

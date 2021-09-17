@@ -4,7 +4,7 @@ namespace FileManager.Views
 {
     public partial class TextPage : Page
     {
-        private static TextPage _instance;
+        private static TextPage? _instance;
 
         public static TextPage GetInstance()
         {

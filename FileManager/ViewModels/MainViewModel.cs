@@ -53,7 +53,9 @@ namespace FileManager.ViewModels
         }
 
         public MainViewModel()
-        { 
+        {
+            _selectedFile = null!;
+            _currentPage = null!;
             Elements = new ObservableCollection<Element>();
         }
 
@@ -124,6 +126,8 @@ namespace FileManager.ViewModels
         public ICommand ShowFile =>
             new DelegateCommand<Element>(file =>
             {
+                if (file is null) return;
+
                 var fileExtension = Path.GetExtension(file.FullName);
 
                 var fileExtensions = new Dictionary<string, List<string>>()

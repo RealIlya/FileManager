@@ -12,6 +12,8 @@ namespace FileManager.Models
 
         public Element()
         {
+            Name = null!;
+            FullName = null!;
             Children = new ObservableCollection<Element>();
         }
     }
