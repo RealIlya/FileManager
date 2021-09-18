@@ -67,18 +67,20 @@
         </Compile>
         <Compile Include="Controls\ExtendedTreeView.cs" />
         <Compile Include="Models\Element.cs" />
+        <Compile Include="Models\TabPage.cs" />
         <Compile Include="ViewModels\BaseVM.cs" />
         <Compile Include="ViewModels\MainViewModel.cs" />
+        <Compile Include="ViewModels\PictureViewModel.cs" />
         <Compile Include="ViewModels\TextViewModel.cs" />
         <Compile Include="Views\MainWindow.xaml.cs">
           <DependentUpon>MainWindow.xaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
-        <Compile Include="Views\PicturePage.xaml.cs">
-          <DependentUpon>PicturePage.xaml</DependentUpon>
+        <Compile Include="Views\PictureUserControl.xaml.cs">
+          <DependentUpon>PictureUserControl.xaml</DependentUpon>
         </Compile>
-        <Compile Include="Views\TextPage.xaml.cs">
-          <DependentUpon>TextPage.xaml</DependentUpon>
+        <Compile Include="Views\TextUserControl.xaml.cs">
+          <DependentUpon>TextUserControl.xaml</DependentUpon>
         </Compile>
         <Compile Include="Views\VideoPage.xaml.cs">
           <DependentUpon>VideoPage.xaml</DependentUpon>
@@ -109,13 +111,14 @@
       <Page Include="Styles\Menu.xaml" />
       <Page Include="Styles\ScrollBar.xaml" />
       <Page Include="Styles\Texts.xaml" />
-      <Page Include="Styles\UserControl.xaml" />
+      <Page Include="Styles\ToolTip.xaml" />
+      <Page Include="Styles\TreeView.xaml" />
       <Page Include="Views\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
         <SubType>Designer</SubType>
       </Page>
-      <Page Include="Views\PicturePage.xaml" />
-      <Page Include="Views\TextPage.xaml" />
+      <Page Include="Views\PictureUserControl.xaml" />
+      <Page Include="Views\TextUserControl.xaml" />
       <Page Include="Views\VideoPage.xaml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

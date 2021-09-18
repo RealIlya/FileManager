@@ -24,6 +24,8 @@ namespace FileManager.Controls
             get { return (object)GetValue(SelectedItem_Property); }
             set { SetValue(SelectedItem_Property, value); }
         }
-        public static readonly DependencyProperty SelectedItem_Property = DependencyProperty.Register("SelectedItem_", typeof(object), typeof(ExtendedTreeView), new UIPropertyMetadata(null));
+
+        public static readonly DependencyProperty SelectedItem_Property = DependencyProperty.Register("SelectedItem_",
+            typeof(object), typeof(ExtendedTreeView), new UIPropertyMetadata(null));
     }
 }

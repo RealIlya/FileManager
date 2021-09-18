@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using DevExpress.Mvvm;
@@ -14,6 +13,7 @@ using FileManager.Models;
 using FileManager.Views;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.Forms.MessageBox;
+using UserControl = System.Windows.Controls.UserControl;
 
 // TODO доделать отображение всех страниц, оптимизировать код
 
@@ -22,9 +22,10 @@ namespace FileManager.ViewModels
     public class MainViewModel : BaseVM
     {
         private Element _selectedFile;
-        private Page _currentPage;
+        private UserControl _currentPage;
 
         public ObservableCollection<Element> Elements { get; set; }
+        public ObservableCollection<UserControl> Pages { get; set; }
 
         public Element SelectedFile
         {
@@ -40,13 +41,13 @@ namespace FileManager.ViewModels
             }
         }
 
-        public Page CurrentPage
+        public UserControl CurrentPage
         {
             get => _currentPage;
             set
             {
                 if (_currentPage == value) return;
-
+                
                 _currentPage = value;
                 OnPropertyChanged("CurrentPage");
             }
@@ -57,6 +58,7 @@ namespace FileManager.ViewModels
             _selectedFile = null!;
             _currentPage = null!;
             Elements = new ObservableCollection<Element>();
+            Pages = new ObservableCollection<UserControl>();
         }
 
         public ICommand OpenTree =>
@@ -136,16 +138,20 @@ namespace FileManager.ViewModels
                     { "Img", new List<string>() { ".jpeg", ".jpg", ".png" } }
                 };
 
-                if (fileExtensions["Txt"].Exists(item => item == fileExtension))
+                if (fileExtensions["Txt"].Exists(ext => ext == fileExtension))
                 {
                     using var sr = new StreamReader(file.FullName, Encoding.Default);
-                    TextPage.GetInstance().DataContext = new TextViewModel() { TextFile = sr.ReadToEnd() };
-                    CurrentPage = TextPage.GetInstance();
+                    TextUserControl.GetInstance().DataContext = new TextViewModel() { CurrentText = sr.ReadToEnd() };
+                    CurrentPage = TextUserControl.GetInstance();
+                    Pages.Add(TextUserControl.GetInstance());
                     sr.Dispose();
                     sr.Close();
                 }
-                else if (fileExtensions["Img"].Exists(item => item == fileExtension))
+                else if (fileExtensions["Img"].Exists(ext => ext == fileExtension))
                 {
+                    PictureUserControl.GetInstance().DataContext = new PictureViewModel() { CurrentPicture = file.FullName };
+                    CurrentPage = PictureUserControl.GetInstance();
+                    Pages.Add(PictureUserControl.GetInstance());
                 }
             });
 

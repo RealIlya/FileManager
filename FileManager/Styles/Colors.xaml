@@ -15,6 +15,9 @@
     <Color x:Key="UltraLightDarkBaseColor">#D6B69E</Color>
 
 
+    <SolidColorBrush x:Key="UltraDarkBrush" Color="Gray" />
+    <Color x:Key="UltraDarkColor">Gray</Color>
+    
     <SolidColorBrush x:Key="DarkBrush" Color="#FFD6D6D6" />
     <Color x:Key="DarkColor">#FFD6D6D6</Color>
 

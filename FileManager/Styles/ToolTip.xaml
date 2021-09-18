@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ToolTipStyle" TargetType="ToolTip">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Grid>
+                        <Border
+                            Name="Border"
+                            HorizontalAlignment="Stretch"
+                            Background="White"
+                            BorderBrush="White">
+                            <TextBlock
+                                Name="TextBlock"
+                                VerticalAlignment="Center"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource UltraDarkBrush}"
+                                Style="{StaticResource BaseText}"
+                                Text="{Binding Name}"
+                                TextAlignment="Left"
+                                TextTrimming="None"
+                                TextWrapping="NoWrap" />
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}"
+                            Value="True">
+                            <Setter TargetName="Border"
+                                    Property="Background"
+                                    Value="{StaticResource UltraLightDarkBaseBrush}" />
+                            <Setter TargetName="Border"
+                                    Property="BorderBrush"
+                                    Value="{StaticResource UltraLightDarkBaseBrush}" />
+                            <Setter TargetName="TextBlock"
+                                    Property="Foreground"
+                                    Value="{StaticResource LightBrush}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

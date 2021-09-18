@@ -11,12 +11,8 @@ C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\o
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\FileManager.exe
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\FileManager.pdb
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\MainWindow.g.cs
-C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\TextPage.g.cs
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\MainWindow.baml
-C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\TextPage.baml
-C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\PicturePage.g.cs
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\VideoPage.g.cs
-C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\PicturePage.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\VideoPage.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\bin\Debug\DevExpress.Mvvm.dll
@@ -28,8 +24,13 @@ C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\o
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Colors.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Fonts.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Texts.baml
-C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\UserControl.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\App.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Menu.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\ScrollBar.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\Buttons.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\ToolTip.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\PictureUserControl.g.cs
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\TextUserControl.g.cs
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\PictureUserControl.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\TextUserControl.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\TreeView.baml

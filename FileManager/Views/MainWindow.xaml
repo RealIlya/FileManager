@@ -55,9 +55,7 @@
                                     ItemsSource="{Binding Elements}"
                                     SelectedItem_="{Binding SelectedFile, Mode=TwoWay}">
                 <local:ExtendedTreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                        <TextBlock Text="{Binding Name}" />
-                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}" />
                 </local:ExtendedTreeView.ItemTemplate>
 
                 <local:ExtendedTreeView.ItemContainerStyle>
@@ -102,7 +100,20 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Text="{Binding SelectedFile.Name}" />
-                <Frame Grid.Row="1" Content="{Binding CurrentPage}" />
+                <!-- <UserControl Grid.Row="1" Content="{Binding CurrentPage}" /> -->
+                <TabControl Grid.Row="1" ItemsSource="{Binding Pages}" 
+                            SelectedItem="{Binding CurrentPage, Mode=TwoWay}">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="Aboba" />
+                                <TextBlock Text="Abobis" />
+                            </StackPanel>
+
+                            <!-- <UserControl Content="{Binding Content}"></UserControl> -->
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                </TabControl>
             </Grid>
         </Grid>
 

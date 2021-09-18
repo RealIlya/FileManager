@@ -6,22 +6,27 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <Polyline
+                            Grid.Column="0"
                             Name="Triangle1"
                             Margin="2"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Stroke="{StaticResource DarkBrush}"
+                            Stroke="{StaticResource UltraDarkBrush}"
                             StrokeThickness="1.6"
                             Fill="Transparent"
                             Points="0,0 6,6 0,12" />
 
                         <Polyline
+                            Grid.Column="0"
                             Name="Triangle2"
                             Margin="2"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Stroke="{StaticResource DarkBrush}"
+                            Stroke="{StaticResource UltraDarkBrush}"
                             StrokeThickness="1.6"
                             Points="0,6 6,0 12,6"
                             Fill="Transparent"
@@ -35,15 +40,49 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Triangle1" Property="Stroke"
+                            <Setter TargetName="Triangle1"
+                                    Property="Stroke"
                                     Value="{StaticResource UltraLightDarkBaseBrush}" />
-                            <Setter TargetName="Triangle2" Property="Stroke"
+                            <Setter TargetName="Triangle2"
+                                    Property="Stroke"
                                     Value="{StaticResource UltraLightDarkBaseBrush}" />
                         </Trigger>
 
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Triangle1" Property="Visibility" Value="Hidden" />
-                            <Setter TargetName="Triangle2" Property="Visibility" Value="Visible" />
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                    Binding="{Binding IsMouseOver, ElementName=Triangle1}"
+                                    Value="True" />
+                                <Condition
+                                    Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}"
+                                    Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Triangle1"
+                                    Property="Stroke"
+                                    Value="{StaticResource MediumBrush}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                    Binding="{Binding IsMouseOver, ElementName=Triangle2}"
+                                    Value="True" />
+                                <Condition
+                                    Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeViewItem}}"
+                                    Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Triangle2"
+                                    Property="Stroke"
+                                    Value="{StaticResource MediumBrush}" />
+                        </MultiDataTrigger>
+
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="Triangle1"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="Triangle2"
+                                    Property="Visibility"
+                                    Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

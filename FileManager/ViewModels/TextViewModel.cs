@@ -4,17 +4,17 @@ namespace FileManager.ViewModels
 {
     public class TextViewModel : BaseVM
     {
-        private string _textFile;
+        private string _currentText;
 
-        public string TextFile
+        public string CurrentText
         {
-            get => _textFile;
+            get => _currentText;
             set
             {
-                if (_textFile == value) return;
+                if (_currentText == value) return;
 
-                _textFile = value;
-                OnPropertyChanged("TextFile");
+                _currentText = value;
+                OnPropertyChanged("CurrentText");
             }
         }
     }
