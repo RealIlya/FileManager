@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="Styles/Buttons.xaml" />
                 <ResourceDictionary Source="Styles/Menu.xaml" />
                 <ResourceDictionary Source="Styles/ScrollBar.xaml" />
-                <ResourceDictionary Source="Styles/TreeView.xaml" />
+                <ResourceDictionary Source="Styles/TreeViewItem.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

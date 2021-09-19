@@ -34,3 +34,7 @@ C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\o
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\PictureUserControl.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Views\TextUserControl.baml
 C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\obj\Debug\Styles\TreeView.baml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\Admin\Desktop\DON'T DELETE\inventions\C sharp\FileManager\FileManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml

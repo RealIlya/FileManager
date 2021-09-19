@@ -44,6 +44,14 @@
           <HintPath>..\packages\DevExpressMvvm.21.1.5\lib\net452\DevExpress.Mvvm.UI.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -67,7 +75,7 @@
         </Compile>
         <Compile Include="Controls\ExtendedTreeView.cs" />
         <Compile Include="Models\Element.cs" />
-        <Compile Include="Models\TabPage.cs" />
+        <Compile Include="Models\TabElement.cs" />
         <Compile Include="ViewModels\BaseVM.cs" />
         <Compile Include="ViewModels\MainViewModel.cs" />
         <Compile Include="ViewModels\PictureViewModel.cs" />
@@ -110,9 +118,10 @@
       <Page Include="Styles\Fonts.xaml" />
       <Page Include="Styles\Menu.xaml" />
       <Page Include="Styles\ScrollBar.xaml" />
+      <Page Include="Styles\TabItem.xaml" />
       <Page Include="Styles\Texts.xaml" />
       <Page Include="Styles\ToolTip.xaml" />
-      <Page Include="Styles\TreeView.xaml" />
+      <Page Include="Styles\TreeViewItem.xaml" />
       <Page Include="Views\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
         <SubType>Designer</SubType>

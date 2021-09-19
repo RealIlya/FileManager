@@ -11,6 +11,7 @@ using System.Windows.Input;
 using DevExpress.Mvvm;
 using FileManager.Models;
 using FileManager.Views;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.Forms.MessageBox;
 using UserControl = System.Windows.Controls.UserControl;
@@ -22,10 +23,10 @@ namespace FileManager.ViewModels
     public class MainViewModel : BaseVM
     {
         private Element _selectedFile;
-        private UserControl _currentPage;
+        private TabElement _selectedTabElement;
 
         public ObservableCollection<Element> Elements { get; set; }
-        public ObservableCollection<UserControl> Pages { get; set; }
+        public ObservableCollection<TabElement> Pages { get; set; }
 
         public Element SelectedFile
         {
@@ -35,30 +36,30 @@ namespace FileManager.ViewModels
                 if (_selectedFile == value) return;
 
                 _selectedFile = value;
-                if (_selectedFile.Extension is null) _selectedFile = null;
+                // if (_selectedFile.Extension is null) _selectedFile = null;
 
                 OnPropertyChanged("SelectedFile");
             }
         }
 
-        public UserControl CurrentPage
+        public TabElement SelectedTabElement
         {
-            get => _currentPage;
+            get => _selectedTabElement;
             set
             {
-                if (_currentPage == value) return;
-                
-                _currentPage = value;
-                OnPropertyChanged("CurrentPage");
+                if (_selectedTabElement == value) return;
+
+                _selectedTabElement = value;
+                OnPropertyChanged("SelectedTabElement");
             }
         }
 
         public MainViewModel()
         {
             _selectedFile = null!;
-            _currentPage = null!;
+            _selectedTabElement = null!;
             Elements = new ObservableCollection<Element>();
-            Pages = new ObservableCollection<UserControl>();
+            Pages = new ObservableCollection<TabElement>();
         }
 
         public ICommand OpenTree =>
@@ -89,16 +90,20 @@ namespace FileManager.ViewModels
                     }
                 }
 
-                var fbd = new FolderBrowserDialog();
+                // var fbd = new FolderBrowserDialog();
+                var fbd = new CommonOpenFileDialog();
 
-                if (fbd.ShowDialog() == DialogResult.OK)
+                fbd.Title = "Select the Path";
+                fbd.IsFolderPicker = true;
+
+                if (fbd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     await Task.Run(() =>
                     {
                         Application.Current.Dispatcher.Invoke(() =>
                         {
                             Elements.Add(new Element()
-                                { Name = Path.GetFileName(fbd.SelectedPath), FullName = fbd.SelectedPath });
+                                { Name = Path.GetFileName(fbd.FileName), FullName = fbd.FileName });
                             LoadChildElements(Elements);
 
                             Task.Delay(500).Wait();
@@ -134,24 +139,28 @@ namespace FileManager.ViewModels
 
                 var fileExtensions = new Dictionary<string, List<string>>()
                 {
-                    { "Txt", new List<string>() { ".txt", ".rtf", ".docx" } },
+                    { "Txt", new List<string>() { ".txt", ".rtf", ".docx", ".py" } },
                     { "Img", new List<string>() { ".jpeg", ".jpg", ".png" } }
                 };
 
                 if (fileExtensions["Txt"].Exists(ext => ext == fileExtension))
                 {
                     using var sr = new StreamReader(file.FullName, Encoding.Default);
-                    TextUserControl.GetInstance().DataContext = new TextViewModel() { CurrentText = sr.ReadToEnd() };
-                    CurrentPage = TextUserControl.GetInstance();
-                    Pages.Add(TextUserControl.GetInstance());
+                    var viewModel = new TextViewModel() { CurrentText = sr.ReadToEnd() };
+                    var view = new TextUserControl() { DataContext = viewModel };
+                    var elem = new TabElement() { Name = file.Name, Content = view };
+                    Pages.Add(elem);
+                    SelectedTabElement = elem;
                     sr.Dispose();
                     sr.Close();
                 }
                 else if (fileExtensions["Img"].Exists(ext => ext == fileExtension))
                 {
-                    PictureUserControl.GetInstance().DataContext = new PictureViewModel() { CurrentPicture = file.FullName };
-                    CurrentPage = PictureUserControl.GetInstance();
-                    Pages.Add(PictureUserControl.GetInstance());
+                    var viewModel = new PictureViewModel() { CurrentPicture = file.FullName };
+                    var view = new PictureUserControl() { DataContext = viewModel };
+                    var elem = new TabElement() { Name = file.Name, Content = view };
+                    Pages.Add(elem);
+                    SelectedTabElement = elem;
                 }
             });
 
